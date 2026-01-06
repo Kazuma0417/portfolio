@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kazuma Oshiro | Web Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+    a { color: #38bdf8; text-decoration: none; }
+    h1, h2, h3 {
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+    section {
+      padding: 48px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* language toggle */
+    .lang-switch {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* fade */
+    .fade { opacity: 0; transform: translateY(30px); transition: .8s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    /* hero */
+    .hero {
+      min-height: 55vh;
+      padding-top: 64px;
+      padding-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: .05em; }
+    .hero p { color: #94a3b8; font-size: 1.2rem; }
+
+    /* card */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    /* skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* works */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .work-card {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      cursor: pointer;
+      transition: .2s;
+    }
+    .work-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.08); }
+
+    /* modal */
+    .modal { position: fixed; inset: 0; background: rgba(15,23,42,.9); display: none; align-items: center; justify-content: center; }
+    .modal.show { display: flex; }
+    .modal-content { background: #020617; padding: 32px; border-radius: 20px; max-width: 600px; width: 90%; }
+    .close { float: right; cursor: pointer; color: #94a3b8; }
+
+    footer { padding: 48px 24px; text-align: center; color: #64748b; }
+  </style>
+</head>
+<body>
+
+<div class="lang-switch" id="langBtn">EN</div>
+
+<section class="hero fade">
+  <h1>Kazuma Oshiro</h1>
+  <p data-ja="Webエンジニア / クリエイティブコーダー" data-en="Web Developer / Creative Coder">Webエンジニア / クリエイティブコーダー</p>
+</section>
+
+<section class="fade" id="about">
+  <h2 data-ja="About" data-en="About">About</h2>
+  <div class="card">
+    <p data-ja="Pythonを中心に学習し、効率化やWebサイト制作、将来的なアプリ開発に取り組んでいます。コードを通じて価値を創造することを大切にしています。" data-en="Focusing on Python and web development, creating efficient systems, websites, and future applications.">
+      Pythonを中心に学習し、効率化やWebサイト制作、将来的なアプリ開発に取り組んでいます。コードを通じて価値を創造することを大切にしています。
+    </p>
+    <p data-ja="趣味：ゲーム" data-en="Hobby: Gaming">趣味：ゲーム</p>
+  </div>
+</section>
+
+<section class="fade" id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div>OS<br>Windows / macOS</div>
+    <div>Languages<br>HTML / CSS / JavaScript</div>
+    <div>Backend<br>Node.js / Express</div>
+    <div>DB<br>PostgreSQL</div>
+    <div>Tools<br>Git</div>
+  </div>
+</section>
+
+<section class="fade" id="works">
+  <h2 data-ja="Works" data-en="Works">Works</h2>
+  <p style="color:#94a3b8" data-ja="これまでに制作したWebアプリ・実験的作品の一覧です。" data-en="A collection of web apps and experimental projects.">これまでに制作したWebアプリ・実験的作品の一覧です。</p>
+
+  <div class="works-grid">
+  <div class="work-card" data-ja="GitHub" data-en="GitHub" data-link="https://kazuma0417.github.io">GitHub</div>
+  <div class="work-card" data-ja="予定調整" data-en="Schedule Coordinator" data-link="https://boiling-badlands-07908.herokuapp.com/">予定調整</div>
+  <div class="work-card" data-ja="タイマー" data-en="Timer" data-link="timer">タイマー</div>
+  <div class="work-card" data-ja="1日のカウントダウンタイマー" data-en="Daily Countdown" data-link="countdown">1日のカウントダウンタイマー</div>
+  <div class="work-card" data-ja="N水族館" data-en="N Aquarium" data-link="n-aquarium">N水族館</div>
+  <div class="work-card" data-ja="おみくじ" data-en="Omikuji" data-link="omikuji">おみくじ</div>
+  <div class="work-card" data-ja="1人Twitter" data-en="Solo Twitter" data-link="hitori-twitter">1人Twitter</div>
+  <div class="work-card" data-ja="ToDoリスト" data-en="ToDo List" data-link="todo">ToDoリスト</div>
+  <div class="work-card" data-ja="クイズ" data-en="Quiz" data-link="quiz">クイズ</div>
+  <div class="work-card" data-ja="スケジュールアプリ" data-en="Schedule App" data-link="schedule">スケジュールアプリ</div>
+  <div class="work-card" data-ja="顔認証" data-en="Face Recognition" data-link="facetrack">顔認証</div>
+  <div class="work-card" data-ja="ペイント" data-en="Painting" data-link="painting">ペイント</div>
+  <div class="work-card" data-ja="電卓" data-en="Calculator" data-link="calculator">電卓</div>
+  <div class="work-card" data-ja="イメージギャラリー" data-en="Image Gallery" data-link="image-gallary">イメージギャラリー</div>
+  <div class="work-card" data-ja="Carousel Panel" data-en="Carousel Panel" data-link="carousel-panel">Carousel Panel</div>
+  <div class="work-card" data-ja="いいところ診断" data-en="Strength Finder" data-link="https://labeneko-iitokoro-91713.web.app">いいところ診断</div>
+  <div class="work-card" data-ja="日記帳" data-en="Diary App" data-link="https://labeneko-diary-14bf3.web.app">日記帳</div>
+  <div class="work-card" data-ja="ログイン機能付きメモ帳" data-en="Auth Memo" data-link="memo">ログイン機能付きメモ帳</div>
+  <div class="work-card" data-ja="時計" data-en="Clock" data-link="clock">時計</div>
+</div>
+    
+  </div>
+</section>
+
+<section class="fade">
+  <h2>Contact</h2>
+  <a href="mailto:kazuma.programming@gmail.com">kazuma.programming@gmail.com</a>
+</section>
+
+<footer>© 2026 Kazuma Oshiro</footer>
+
+
+</div>
+
+<script>
+  // fade
+  const observer = new IntersectionObserver(e=>e.forEach(v=>v.isIntersecting&&v.target.classList.add('show')),{threshold:.2});
+  document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+  // modal
+  // works buttons
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => {
+      window.open(card.dataset.link, '_blank');
+    });
+  });('click', e => {
+    if (e.target === modalEl) modalEl.classList.remove('show');
+  });('click', e => {
+    if (e.target === modal) modal.classList.remove('show');
+  });
+
+  // language
+  let lang='ja';
+  langBtn.onclick=()=>{
+    lang=lang==='ja'?'en':'ja';
+    langBtn.textContent=lang==='ja'?'EN':'JA';
+    document.querySelectorAll('[data-ja]').forEach(el=>el.textContent=el.dataset[lang]);
+  }
+</script>
+
+</body>
+</html>
